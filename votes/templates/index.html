@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block head %}
+    List of Candidates
+{% endblock head %}
+{% block body %}
+    {% csrf_token %}
+    <ol>
+    {% for candidate in candidates %}
+            <a href="{% url 'votes:detail' candidate.id %}">
+                <div>
+                    <h5>{{ candidate.lastname }}, {{candidate.firstname}}</h5>
+                    <small> {{ candidate.candidate.count }} votes </small>
+                </div>
+    {% endfor %}
+    </ol>
+    <a href="{% url 'votes:ccreate' %}">Add a New Candidate</a><br />
+    <a href="{% url 'votes:pcreate' %}">Add a New Position</a>
+{% endblock body %}

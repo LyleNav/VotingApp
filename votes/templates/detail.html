@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    Candidate Details Page
+{% endblock head %}
+
+{% block body %}
+    <div> 
+        <h2> {{ candidate.lastname }}, {{ candidate.firstname }} </h2>
+            <a href="{% url 'votes:candidate_update' candidate.id %}"><span>Edit</span> </a>
+    </div>
+    <div class="row"> 
+        <small> Position: {{ candidate.position }}</small> 
+    </div>
+    <div class="row"> 
+        <small> Birthdate: {{ candidate.birthdate }}</small>
+        <small> {{ candidate.candidate.count}} votes </small>
+    </div>
+    <div class="row"> 
+        <p> {{ candidate.platform }} <p>
+    </div>
+    <a href='{% url 'votes:vote' candidate.id %}'> <span>VOTE</span> </a>
+{% endblock body %}

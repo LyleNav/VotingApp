@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block head %}
+    Create Position Page
+{% endblock head %}
+
+{% block body %}
+    <form action="{% url 'votes:pcreate' %}" method="POST">
+    {% csrf_token %}
+    {% for field in form %}
+        {{ field.errors }}
+        {{ field.label  }} {{ field }}
+    {% endfor %}
+    <input type="submit" value="Add Position">
+    </form>
+{% endblock body %}
